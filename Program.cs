@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -50,17 +51,69 @@ namespace IS
                 var link = mainUrl + element.GetAttribute("href");
                 var articleDoc = await document.Context.OpenAsync(mainUrl + element.GetAttribute("href"));
                 var title = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(element.TextContent));
-                var annotation = articleDoc.QuerySelectorAll("b").Where(e => e.TextContent.Contains("Аннотация:")).ElementAt(0).NextSibling.TextContent;
-                var keywords = articleDoc.QuerySelectorAll("b ~ i").Where(e => e != null).ElementAt(0).TextContent;
+
+                string annotation = "";
+                var part = articleDoc.QuerySelectorAll("b").Where(e => e.TextContent.Contains("Аннотация:")).ElementAt(0).NextSibling;
+                while (!part.NextSibling.TextContent.Contains("Ключ"))
+                {
+                    annotation += part.TextContent.Trim();
+                    part = part.NextSibling;
+                }
+                annotation.Trim();
+
+                var mystem = Mystem(annotation);
+
+                var porter = PorterForString(annotation);
+
+                var keywords = articleDoc.QuerySelectorAll("b ~ i").Where(e => e != null).ElementAt(0).TextContent.Trim();
 
                 xml.Add(new XElement("article", new XAttribute("link", link),
                     new XElement("title", title),
                     new XElement("annotation", annotation),
+                    new XElement("mystem", mystem),
+                    new XElement("porter", porter),
                     new XElement("keywords", keywords)
                 ));
             }
             Console.WriteLine(xml.ToString());
             xml.Save("C:\\Projects\\IS\\document.xml");
+        }
+
+        private static string Mystem(string input)
+        {
+            File.WriteAllText("C:\\Projects\\IS\\input.txt", input);
+
+            Process p = new Process();
+            string output = "";
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.FileName = "mystem.exe";
+            p.StartInfo.Arguments = "-l -d input.txt";
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = true;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.Start();
+
+            using(var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
+            {
+                output = reader.ReadToEnd();
+            }
+            p.WaitForExit();
+
+            return output;
+        }
+
+        private static string PorterForString(string input)
+        {
+            string[] words = input.Split(' ');
+            string output = "";
+
+            foreach (var item in words)
+            {
+                output += Porter.TransformingWord(item) + " ";
+            }
+
+            return output;
         }
 
     }
