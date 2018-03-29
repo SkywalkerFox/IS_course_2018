@@ -126,12 +126,20 @@ namespace IS
         private static void CreateInvertedIndex()
         {
             XElement inputXML = XElement.Load("document.xml");
-            var elements = inputXML.Elements("article").Elements("mystem");
-            foreach (var item in elements)
+            var elements = inputXML.Elements("article");
+            List<string> words = new List<string>() {""};
+            // Dic
+
+
+            for(int i = 0; i < elements.Count(); i++)
             {
-                Console.WriteLine(item.Value);
+                string value = elements.ElementAt(i).Element("mystem").Value.Trim(new Char[] {'{', '}'});
+                words.AddRange(value.Split("}{").ToList());
+                // Console.WriteLine(item.Value.Contains("{"));                
+                // Console.WriteLine(String.Join(", ", item.Element("mystem").Value.Split("}{").ToList()));
             }
-            Console.WriteLine(elements.Count());
+            Console.WriteLine(String.Join(", ", words.ToArray()));
+            
         }
 
     }
