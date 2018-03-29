@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,13 +19,17 @@ namespace IS
     {
         private const string mainUrl = "http://www.mathnet.ru";
         private const string url = "http://www.mathnet.ru/php/archive.phtml?jrnid=uzku&wshow=issue&bshow=contents&series=0&year=2017&volume=159&issue=1&option_lang=rus&bookID=1681";
+        
+        private static string directory = new DirectoryInfo(Environment.CurrentDirectory).FullName;
 
         private static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            MainAsync(args).GetAwaiter().GetResult();
+            // MainAsync(args).GetAwaiter().GetResult();
+            // Console.WriteLine(directory);
+            CreateInvertedIndex();
         }
 
         private static async Task MainAsync(string[] args)
@@ -81,7 +86,8 @@ namespace IS
 
         private static string Mystem(string input)
         {
-            File.WriteAllText("C:\\Projects\\IS\\input.txt", input);
+            // File.WriteAllText("C:\\Projects\\IS\\input.txt", input);
+            File.WriteAllText(directory + "input.txt", input);
 
             Process p = new Process();
             string output = "";
@@ -114,6 +120,18 @@ namespace IS
             }
 
             return output;
+        }
+
+        //Task3
+        private static void CreateInvertedIndex()
+        {
+            XElement inputXML = XElement.Load("document.xml");
+            var elements = inputXML.Elements("article").Elements("mystem");
+            foreach (var item in elements)
+            {
+                Console.WriteLine(item.Value);
+            }
+            Console.WriteLine(elements.Count());
         }
 
     }
