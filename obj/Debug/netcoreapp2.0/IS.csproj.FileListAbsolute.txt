@@ -19,3 +19,14 @@ D:\Projects\IS_course_2018\obj\Debug\netcoreapp2.0\IS.AssemblyInfoInputs.cache
 D:\Projects\IS_course_2018\obj\Debug\netcoreapp2.0\IS.AssemblyInfo.cs
 D:\Projects\IS_course_2018\obj\Debug\netcoreapp2.0\IS.dll
 D:\Projects\IS_course_2018\obj\Debug\netcoreapp2.0\IS.pdb
+D:\IS_course_2018\bin\Debug\netcoreapp2.0\IS.deps.json
+D:\IS_course_2018\bin\Debug\netcoreapp2.0\IS.runtimeconfig.json
+D:\IS_course_2018\bin\Debug\netcoreapp2.0\IS.runtimeconfig.dev.json
+D:\IS_course_2018\bin\Debug\netcoreapp2.0\IS.dll
+D:\IS_course_2018\bin\Debug\netcoreapp2.0\IS.pdb
+D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.csprojResolveAssemblyReference.cache
+D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.csproj.CoreCompileInputs.cache
+D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.AssemblyInfoInputs.cache
+D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.AssemblyInfo.cs
+D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.dll
+D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.pdb

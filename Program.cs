@@ -19,7 +19,7 @@ namespace IS
     {
         private const string mainUrl = "http://www.mathnet.ru";
         private const string url = "http://www.mathnet.ru/php/archive.phtml?jrnid=uzku&wshow=issue&bshow=contents&series=0&year=2017&volume=159&issue=1&option_lang=rus&bookID=1681";
-        
+
         private static string directory = new DirectoryInfo(Environment.CurrentDirectory).FullName;
 
         private static void Main(string[] args)
@@ -28,8 +28,9 @@ namespace IS
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             // MainAsync(args).GetAwaiter().GetResult();
-            // Console.WriteLine(directory);
-            CreateInvertedIndex();
+
+            CreateInvertedIndex("mystem");
+            CreateInvertedIndex("porter");
         }
 
         private static async Task MainAsync(string[] args)
@@ -100,7 +101,7 @@ namespace IS
             p.StartInfo.RedirectStandardOutput = true;
             p.Start();
 
-            using(var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
+            using (var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
             {
                 output = reader.ReadToEnd();
             }
@@ -123,23 +124,63 @@ namespace IS
         }
 
         //Task3
-        private static void CreateInvertedIndex()
+        private static void CreateInvertedIndex(string type)
         {
             XElement inputXML = XElement.Load("document.xml");
             var elements = inputXML.Elements("article");
-            List<string> words = new List<string>() {""};
-            // Dic
+            var termsDictionary = new SortedDictionary<string, List<string>>();
 
-
-            for(int i = 0; i < elements.Count(); i++)
+            for (int i = 0; i < elements.Count(); i++)
             {
-                string value = elements.ElementAt(i).Element("mystem").Value.Trim(new Char[] {'{', '}'});
-                words.AddRange(value.Split("}{").ToList());
+                string doc = elements.ElementAt(i).Attribute("link").Value;
+                string[] terms;
+                if (type.Equals("mystem"))
+                {
+                    terms = elements.ElementAt(i).Element(type).Value.Trim(new Char[] { '{', '}' }).Split("}{");
+                }
+                else
+                {
+                    terms = elements.ElementAt(i).Element(type).Value.Trim().Split(" ");
+                }
+
+                foreach (var term in terms)
+                {
+                    if (termsDictionary.TryGetValue(term, out List<string> docList))
+                    {
+                        if (!docList.Contains(doc))
+                        {
+                            docList.Add(doc);
+                        }
+                    }
+                    else
+                    {
+                        var tempList = new List<string>() { doc };
+                        termsDictionary[term] = tempList;
+                    }
+                }
+
+
+                // terms.AddRange(value.Split("}{").ToList());
                 // Console.WriteLine(item.Value.Contains("{"));                
                 // Console.WriteLine(String.Join(", ", item.Element("mystem").Value.Split("}{").ToList()));
             }
-            Console.WriteLine(String.Join(", ", words.ToArray()));
-            
+
+            XElement xml = new XElement(new XElement("terms",
+                                            new XElement(type)
+                                        ));
+
+            foreach (KeyValuePair<string, List<string>> term in termsDictionary)
+            {
+                xml.Add(new XElement("term", new XAttribute("name", term.Key),
+                            new XElement("docs", String.Join(", ", term.Value.ToArray()))
+                            ));
+            }
+
+            Console.WriteLine(xml);
+            Console.WriteLine(directory);
+            xml.Save(directory + "\\" + type + "_index.xml");
+            // Console.WriteLine(String.Join(", ", words.ToArray()));
+
         }
 
     }
