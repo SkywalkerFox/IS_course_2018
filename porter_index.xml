@@ -1,20 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <terms>
   <porter />
+  <term name="">
+    <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1388, http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391, http://www.mathnet.ru/rus/uzku1392, http://www.mathnet.ru/rus/uzku1393, http://www.mathnet.ru/rus/uzku1394, http://www.mathnet.ru/rus/uzku1395, http://www.mathnet.ru/rus/uzku1396</docs>
+  </term>
   <term name="$\{125,96,1;1,48,125\}$">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
-  </term>
-  <term name="(в них,">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
-  <term name="(осесимметричном)">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
-  <term name="(посредств">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
-  </term>
-  <term name="(с использован">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="“дистанци">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
@@ -64,7 +55,7 @@
   <term name="аффи">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="бергмана$k_0(w,\overline\omega)$и$l_0(w,\omega)$.">
+  <term name="бергмана$k_0(w,\overline\omega)$и$l_0(w,\omega)$">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
   <term name="бифуркацио">
@@ -77,9 +68,6 @@
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="блок">
-    <docs>http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
-  <term name="блока,">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="больш">
@@ -104,9 +92,6 @@
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="в грунт">
-    <docs>http://www.mathnet.ru/rus/uzku1392</docs>
-  </term>
-  <term name="в грунте.">
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
   <term name="в двумерн">
@@ -148,6 +133,9 @@
   <term name="в неотрицательн">
     <docs>http://www.mathnet.ru/rus/uzku1389</docs>
   </term>
+  <term name="в них">
+    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
+  </term>
   <term name="в нормальн">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
@@ -170,10 +158,7 @@
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="в предположен">
-    <docs>http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
-  <term name="в предположении,">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1391, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="в прискважи">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
@@ -211,7 +196,7 @@
   <term name="в трещиноват">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="в частности,">
+  <term name="в частност">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="в эт">
@@ -250,7 +235,7 @@
   <term name="взаимодейств">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
-  <term name="вибраций,">
+  <term name="вибрац">
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
   <term name="вибропоглоща">
@@ -277,13 +262,7 @@
   <term name="возника">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
-  <term name="возникает,">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
   <term name="волн">
-    <docs>http://www.mathnet.ru/rus/uzku1392</docs>
-  </term>
-  <term name="волны.">
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
   <term name="вопрос">
@@ -316,12 +295,6 @@
   <term name="выражен">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="выражением.">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
-  <term name="выражения,">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
   <term name="высок">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
@@ -346,9 +319,6 @@
   <term name="геометр">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="геометрией.">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
   <term name="геометрическ">
     <docs>http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
@@ -361,19 +331,13 @@
   <term name="гладк">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="гравитации.">
+  <term name="гравитац">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="граничн">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="граф">
-    <docs>http://www.mathnet.ru/rus/uzku1388</docs>
-  </term>
-  <term name="графов,">
-    <docs>http://www.mathnet.ru/rus/uzku1388</docs>
-  </term>
-  <term name="графы,">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
   <term name="грунта –">
@@ -388,7 +352,7 @@
   <term name="да">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1388, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="давления.">
+  <term name="давлен">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="дан">
@@ -421,7 +385,7 @@
   <term name="декартов">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="деформациях.">
+  <term name="деформац">
     <docs>http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
   <term name="деформирован">
@@ -437,15 +401,12 @@
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
   <term name="длин">
-    <docs>http://www.mathnet.ru/rus/uzku1389</docs>
-  </term>
-  <term name="длины,">
-    <docs>http://www.mathnet.ru/rus/uzku1392</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
   <term name="для">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391, http://www.mathnet.ru/rus/uzku1393, http://www.mathnet.ru/rus/uzku1394, http://www.mathnet.ru/rus/uzku1395, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="для$gq(4,6)$.">
+  <term name="для$gq(4,6)$">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
   <term name="добыва">
@@ -455,10 +416,7 @@
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="доказа">
-    <docs>http://www.mathnet.ru/rus/uzku1394</docs>
-  </term>
-  <term name="доказано,">
-    <docs>http://www.mathnet.ru/rus/uzku1388</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1388, http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
   <term name="достига">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
@@ -479,10 +437,7 @@
     <docs>http://www.mathnet.ru/rus/uzku1389</docs>
   </term>
   <term name="жидкост">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
-  </term>
-  <term name="жидкости.">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="заводнен">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
@@ -494,16 +449,7 @@
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="задач">
-    <docs>http://www.mathnet.ru/rus/uzku1388, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1392, http://www.mathnet.ru/rus/uzku1394, http://www.mathnet.ru/rus/uzku1395, http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
-  <term name="задаче.">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
-  </term>
-  <term name="задачи,">
-    <docs>http://www.mathnet.ru/rus/uzku1393</docs>
-  </term>
-  <term name="задачи.">
-    <docs>http://www.mathnet.ru/rus/uzku1390</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1388, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1392, http://www.mathnet.ru/rus/uzku1393, http://www.mathnet.ru/rus/uzku1394, http://www.mathnet.ru/rus/uzku1395, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="задч">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1388, http://www.mathnet.ru/rus/uzku1392</docs>
@@ -520,13 +466,13 @@
   <term name="затрудня">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
-  <term name="значением$t$,$2&lt;t\leq3$.">
+  <term name="значен">
+    <docs>http://www.mathnet.ru/rus/uzku1388</docs>
+  </term>
+  <term name="значением$t$,$2&lt;t\leq3$">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
   <term name="значением$t$для$t=1,2,\dots$в">
-    <docs>http://www.mathnet.ru/rus/uzku1388</docs>
-  </term>
-  <term name="значением,">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
   <term name="значительн">
@@ -538,9 +484,6 @@
   <term name="зон">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="зоне.">
-    <docs>http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
   <term name="зрен">
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
@@ -550,7 +493,7 @@
   <term name="и с ядерн">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
-  <term name="и. п. митюком.">
+  <term name="и. п. митюк">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
   <term name="игра">
@@ -628,7 +571,7 @@
   <term name="кинематическ">
     <docs>http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
-  <term name="клебша–гордана),">
+  <term name="клебша–горда">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="ковариантн">
@@ -638,9 +581,6 @@
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="кольц">
-    <docs>http://www.mathnet.ru/rus/uzku1390</docs>
-  </term>
-  <term name="кольца.">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
   <term name="компактн">
@@ -667,29 +607,17 @@
   <term name="координат">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="координат.">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
-  <term name="координатах.">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
   <term name="котор">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391, http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
   <term name="коэффициент">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1391, http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="коэффициентов.">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
   <term name="краев">
     <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
   <term name="кривизн">
     <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
-  <term name="кривизны.">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="критер">
     <docs>http://www.mathnet.ru/rus/uzku1394</docs>
@@ -706,26 +634,20 @@
   <term name="кручен">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="кручения,">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
   <term name="куб">
     <docs>http://www.mathnet.ru/rus/uzku1389</docs>
   </term>
   <term name="латеральн">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="лежандра,">
+  <term name="лежндр">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="лин">
-    <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1392</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
   <term name="линейн">
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
-  </term>
-  <term name="линии,">
-    <docs>http://www.mathnet.ru/rus/uzku1389</docs>
   </term>
   <term name="локальн">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
@@ -751,17 +673,8 @@
   <term name="метод">
     <docs>http://www.mathnet.ru/rus/uzku1394, http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="методов.">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
-  </term>
   <term name="метрик">
-    <docs>http://www.mathnet.ru/rus/uzku1389</docs>
-  </term>
-  <term name="метрика.">
-    <docs>http://www.mathnet.ru/rus/uzku1389</docs>
-  </term>
-  <term name="метрикой,">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="метрк">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
@@ -784,9 +697,6 @@
   <term name="многообраз">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="многообразия,">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
   <term name="многосвязн">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
@@ -805,7 +715,7 @@
   <term name="модифицирова">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="модуля,">
+  <term name="модул">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
   <term name="можн">
@@ -826,10 +736,10 @@
   <term name="налич">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="например,">
+  <term name="например">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
-  <term name="напряжения,">
+  <term name="напряжен">
     <docs>http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
   <term name="насыще">
@@ -859,7 +769,7 @@
   <term name="нелокальн">
     <docs>http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
-  <term name="неметричности.">
+  <term name="неметрчн">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="неоднородн">
@@ -895,14 +805,11 @@
   <term name="обводне">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="обжатия,">
+  <term name="обжат">
     <docs>http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
   <term name="област">
-    <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
-  <term name="областях,">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="обобще">
     <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391</docs>
@@ -958,9 +865,6 @@
   <term name="операд">
     <docs>http://www.mathnet.ru/rus/uzku1389</docs>
   </term>
-  <term name="операдой,">
-    <docs>http://www.mathnet.ru/rus/uzku1389</docs>
-  </term>
   <term name="описа">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
@@ -975,6 +879,9 @@
   </term>
   <term name="определя">
     <docs>http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1390</docs>
+  </term>
+  <term name="осесимметричн">
+    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="основ">
     <docs>http://www.mathnet.ru/rus/uzku1393</docs>
@@ -1000,9 +907,6 @@
   <term name="отображен">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="отображением.">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
   <term name="пада">
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
@@ -1015,22 +919,19 @@
   <term name="перв">
     <docs>http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
-  <term name="переменных.">
+  <term name="переме">
     <docs>http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
   <term name="перемещен">
     <docs>http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
-  <term name="перемещениям.">
-    <docs>http://www.mathnet.ru/rus/uzku1393</docs>
-  </term>
   <term name="пересечен">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
-  <term name="пересечений$\{125,96,1;1,48,125\}$,$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.в настоя">
+  <term name="пересечений$\{125,96,1;1,48,125\}$">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
-  <term name="пересечений$\{125,96,1;1,48,125\}$.">
+  <term name="пересечений$\{125,96,1;1,48,125\}$,$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.в настоя">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
   <term name="пернос">
@@ -1042,9 +943,6 @@
   <term name="пласт">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="пласта,">
-    <docs>http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
   <term name="пластин">
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
@@ -1052,9 +950,6 @@
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
   <term name="плоскост">
-    <docs>http://www.mathnet.ru/rus/uzku1389</docs>
-  </term>
-  <term name="плоскости.">
     <docs>http://www.mathnet.ru/rus/uzku1389</docs>
   </term>
   <term name="по">
@@ -1075,12 +970,6 @@
   <term name="подалгебр">
     <docs>http://www.mathnet.ru/rus/uzku1389</docs>
   </term>
-  <term name="подалгебр,">
-    <docs>http://www.mathnet.ru/rus/uzku1389</docs>
-  </term>
-  <term name="подалгеброй,">
-    <docs>http://www.mathnet.ru/rus/uzku1389</docs>
-  </term>
   <term name="подграф">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
@@ -1093,13 +982,13 @@
   <term name="подход 2">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="поездов.">
+  <term name="поезд">
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
   <term name="позволя">
     <docs>http://www.mathnet.ru/rus/uzku1395, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="показано,">
+  <term name="показа">
     <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="пол">
@@ -1130,6 +1019,9 @@
     <docs>http://www.mathnet.ru/rus/uzku1388, http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
   <term name="поскольк">
+    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
+  </term>
+  <term name="посредств">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="поставле">
@@ -1189,7 +1081,7 @@
   <term name="привод">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
-  <term name="применение.">
+  <term name="применен">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="применя">
@@ -1210,13 +1102,13 @@
   <term name="провод">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="проводимости.">
+  <term name="проводм">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="продемонстрирова">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="производных,">
+  <term name="производн">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="произвольн">
@@ -1261,9 +1153,6 @@
   <term name="радиус">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
-  <term name="радиусом,">
-    <docs>http://www.mathnet.ru/rus/uzku1390</docs>
-  </term>
   <term name="разделен">
     <docs>http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
@@ -1271,9 +1160,6 @@
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="разложен">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
-  <term name="разложения.">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="разност">
@@ -1307,18 +1193,12 @@
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="решен">
-    <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1392, http://www.mathnet.ru/rus/uzku1394, http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
-  <term name="решений.">
-    <docs>http://www.mathnet.ru/rus/uzku1393</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1392, http://www.mathnet.ru/rus/uzku1393, http://www.mathnet.ru/rus/uzku1394, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="рол">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="ряд">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
-  <term name="рядов,">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="с вырожде">
@@ -1372,11 +1252,8 @@
   <term name="с экспоненциальн">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="с. п. тимошенко,">
-    <docs>http://www.mathnet.ru/rus/uzku1392</docs>
-  </term>
   <term name="с. п. тимшенк">
-    <docs>http://www.mathnet.ru/rus/uzku1393</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1392, http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
   <term name="свод">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
@@ -1396,7 +1273,7 @@
   <term name="сдвигов">
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
-  <term name="седла,">
+  <term name="седл">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
   <term name="сеточн">
@@ -1420,15 +1297,6 @@
   <term name="скважин">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="скважин.">
-    <docs>http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
-  <term name="скважину.">
-    <docs>http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
-  <term name="скважины,">
-    <docs>http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
   <term name="слабонесферическ">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
@@ -1441,20 +1309,11 @@
   <term name="слоист">
     <docs>http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
-  <term name="слоя,">
-    <docs>http://www.mathnet.ru/rus/uzku1393</docs>
+  <term name="случ">
+    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="случа">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
-  <term name="случае,">
-    <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1390</docs>
-  </term>
-  <term name="случае.">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
-  <term name="случая.">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="со">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
@@ -1495,9 +1354,6 @@
   <term name="сред">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="среде.">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
-  </term>
   <term name="средн">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
@@ -1519,7 +1375,7 @@
   <term name="суперэлементн">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="сути,">
+  <term name="сут">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
   <term name="существе">
@@ -1534,7 +1390,7 @@
   <term name="так">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="тейлора.">
+  <term name="тейлор">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
   <term name="тем">
@@ -1549,7 +1405,7 @@
   <term name="теор">
     <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1392, http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
-  <term name="теорема.">
+  <term name="теорем">
     <docs>http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
   <term name="течен">
@@ -1558,7 +1414,7 @@
   <term name="тип">
     <docs>http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
-  <term name="того,">
+  <term name="тог">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
   <term name="точек">
@@ -1579,38 +1435,17 @@
   <term name="трещин">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="трещин).">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
-  </term>
-  <term name="трещиной)">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
-  </term>
   <term name="удовлетворен">
     <docs>http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
-  <term name="упругости,">
-    <docs>http://www.mathnet.ru/rus/uzku1393</docs>
-  </term>
-  <term name="упругости.">
-    <docs>http://www.mathnet.ru/rus/uzku1392</docs>
+  <term name="упруг">
+    <docs>http://www.mathnet.ru/rus/uzku1392, http://www.mathnet.ru/rus/uzku1393</docs>
   </term>
   <term name="уравнен">
     <docs>http://www.mathnet.ru/rus/uzku1391, http://www.mathnet.ru/rus/uzku1392, http://www.mathnet.ru/rus/uzku1393, http://www.mathnet.ru/rus/uzku1394, http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="уравнений,">
-    <docs>http://www.mathnet.ru/rus/uzku1393</docs>
-  </term>
-  <term name="уравнений.">
-    <docs>http://www.mathnet.ru/rus/uzku1394</docs>
-  </term>
   <term name="услов">
     <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1393, http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
-  <term name="условия,">
-    <docs>http://www.mathnet.ru/rus/uzku1390</docs>
-  </term>
-  <term name="условиях.">
-    <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="установл">
     <docs>http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1394</docs>
@@ -1633,9 +1468,6 @@
   <term name="фильтрац">
     <docs>http://www.mathnet.ru/rus/uzku1395, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="фильтрации,">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
-  </term>
   <term name="форм">
     <docs>http://www.mathnet.ru/rus/uzku1387</docs>
   </term>
@@ -1643,24 +1475,12 @@
     <docs>http://www.mathnet.ru/rus/uzku1392</docs>
   </term>
   <term name="функц">
-    <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1396</docs>
+    <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="функцией$\omega(w)$,">
+  <term name="функцией$\omega(w)$">
     <docs>http://www.mathnet.ru/rus/uzku1390</docs>
   </term>
-  <term name="функции,">
-    <docs>http://www.mathnet.ru/rus/uzku1396</docs>
-  </term>
-  <term name="функции.">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
-  <term name="функций.">
-    <docs>http://www.mathnet.ru/rus/uzku1390</docs>
-  </term>
-  <term name="функциями,">
-    <docs>http://www.mathnet.ru/rus/uzku1391</docs>
-  </term>
-  <term name="фурье,">
+  <term name="фур">
     <docs>http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
   <term name="хорш">
@@ -1678,7 +1498,7 @@
   <term name="четверт">
     <docs>http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
-  <term name="числа$t$.">
+  <term name="числа$t$">
     <docs>http://www.mathnet.ru/rus/uzku1388</docs>
   </term>
   <term name="числе">
@@ -1699,16 +1519,13 @@
   <term name="экстремал">
     <docs>http://www.mathnet.ru/rus/uzku1391</docs>
   </term>
-  <term name="элементами.">
-    <docs>http://www.mathnet.ru/rus/uzku1389</docs>
-  </term>
-  <term name="элементов.">
-    <docs>http://www.mathnet.ru/rus/uzku1395</docs>
+  <term name="элемент">
+    <docs>http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="эт">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1388, http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1391, http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
-  <term name="эталонной,">
+  <term name="этало">
     <docs>http://www.mathnet.ru/rus/uzku1396</docs>
   </term>
   <term name="эффективн">
@@ -1720,19 +1537,13 @@
   <term name="явля">
     <docs>http://www.mathnet.ru/rus/uzku1387, http://www.mathnet.ru/rus/uzku1388, http://www.mathnet.ru/rus/uzku1389, http://www.mathnet.ru/rus/uzku1390, http://www.mathnet.ru/rus/uzku1391, http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
-  <term name="являются,">
-    <docs>http://www.mathnet.ru/rus/uzku1387</docs>
-  </term>
   <term name="явн">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
   <term name="ядр">
     <docs>http://www.mathnet.ru/rus/uzku1394</docs>
   </term>
-  <term name="ядром.">
-    <docs>http://www.mathnet.ru/rus/uzku1394</docs>
-  </term>
-  <term name="ячейки,">
+  <term name="ячейк">
     <docs>http://www.mathnet.ru/rus/uzku1395</docs>
   </term>
 </terms>

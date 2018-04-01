@@ -117,7 +117,8 @@ namespace IS
 
             foreach (var item in words)
             {
-                output += Porter.TransformingWord(item) + " ";
+
+                output += Porter.TransformingWord(item.Trim(new Char[] { '(', ')', '.', ',' })) + " ";
             }
 
             return output;
@@ -140,7 +141,7 @@ namespace IS
                 }
                 else
                 {
-                    terms = elements.ElementAt(i).Element(type).Value.Trim().Split(" ");
+                    terms = elements.ElementAt(i).Element(type).Value.Trim(new Char[] { '(', ')', '.', ',' }).Split(" ");
                 }
 
                 foreach (var term in terms)
