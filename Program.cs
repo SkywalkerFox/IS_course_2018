@@ -27,7 +27,7 @@ namespace IS
             Console.OutputEncoding = Encoding.UTF8;
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            // MainAsync(args).GetAwaiter().GetResult();
+            MainAsync(args).GetAwaiter().GetResult();
 
             CreateInvertedIndex("mystem");
             CreateInvertedIndex("porter");
@@ -67,9 +67,9 @@ namespace IS
                 }
                 annotation.Trim();
 
-                var mystem = Mystem(annotation);
+                var mystem = Mystem(title + " " + annotation);
 
-                var porter = PorterForString(annotation);
+                var porter = PorterForString(title + " " + annotation);
 
                 var keywords = articleDoc.QuerySelectorAll("b ~ i").Where(e => e != null).ElementAt(0).TextContent.Trim();
 
@@ -88,7 +88,7 @@ namespace IS
         private static string Mystem(string input)
         {
             // File.WriteAllText("C:\\Projects\\IS\\input.txt", input);
-            File.WriteAllText(directory + "input.txt", input);
+            File.WriteAllText(directory + "\\input.txt", input);
 
             Process p = new Process();
             string output = "";
@@ -101,7 +101,7 @@ namespace IS
             p.StartInfo.RedirectStandardOutput = true;
             p.Start();
 
-            using (var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
+            using(var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
             {
                 output = reader.ReadToEnd();
             }
@@ -159,21 +159,20 @@ namespace IS
                     }
                 }
 
-
                 // terms.AddRange(value.Split("}{").ToList());
                 // Console.WriteLine(item.Value.Contains("{"));                
                 // Console.WriteLine(String.Join(", ", item.Element("mystem").Value.Split("}{").ToList()));
             }
 
             XElement xml = new XElement(new XElement("terms",
-                                            new XElement(type)
-                                        ));
+                new XElement(type)
+            ));
 
             foreach (KeyValuePair<string, List<string>> term in termsDictionary)
             {
                 xml.Add(new XElement("term", new XAttribute("name", term.Key),
-                            new XElement("docs", String.Join(", ", term.Value.ToArray()))
-                            ));
+                    new XElement("docs", String.Join(", ", term.Value.ToArray()))
+                ));
             }
 
             Console.WriteLine(xml);

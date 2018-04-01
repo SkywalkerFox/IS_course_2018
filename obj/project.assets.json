@@ -4144,11 +4144,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\IS_course_2018\\IS.csproj",
+      "projectUniqueName": "C:\\Projects\\IS\\IS.csproj",
       "projectName": "IS",
-      "projectPath": "D:\\IS_course_2018\\IS.csproj",
+      "projectPath": "C:\\Projects\\IS\\IS.csproj",
       "packagesPath": "C:\\Users\\pavel\\.nuget\\packages\\",
-      "outputPath": "D:\\IS_course_2018\\obj\\",
+      "outputPath": "C:\\Projects\\IS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

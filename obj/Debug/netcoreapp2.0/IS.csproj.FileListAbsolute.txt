@@ -30,3 +30,4 @@ D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.AssemblyInfoInputs.cache
 D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.AssemblyInfo.cs
 D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.dll
 D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.pdb
+C:\Projects\IS\obj\Debug\netcoreapp2.0\IS.csprojResolveAssemblyReference.cache
