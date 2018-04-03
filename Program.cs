@@ -222,7 +222,6 @@ namespace IS
                 var porterWord = word;
                 if (porterWord.ElementAt(0).Equals('-'))
                 {
-                    Console.WriteLine("-");
                     exceptSign = true;
                     porterWord = porterWord.Remove(0, 1);
                 }
