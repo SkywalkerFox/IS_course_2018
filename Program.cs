@@ -22,6 +22,7 @@ namespace IS
         private const string url = "http://www.mathnet.ru/php/archive.phtml?jrnid=uzku&wshow=issue&bshow=contents&series=0&year=2017&volume=159&issue=1&option_lang=rus&bookID=1681";
 
         private static string directory = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        private static SortedDictionary<string, List<string>> termsDictionary = CreateInvertedIndex("porter");
 
         private static void Main(string[] args)
         {
@@ -31,7 +32,8 @@ namespace IS
             // MainAsync(args).GetAwaiter().GetResult();
 
             // CreateInvertedIndex("mystem");
-            CreateInvertedIndex("porter");
+            // CreateInvertedIndex("porter");
+            Intersection();
         }
 
         private static async Task MainAsync(string[] args)
@@ -126,7 +128,7 @@ namespace IS
         }
 
         //Task3
-        private static void CreateInvertedIndex(string type)
+        private static SortedDictionary<string, List<string>> CreateInvertedIndex(string type)
         {
             XElement inputXML = XElement.Load("document.xml");
             var elements = inputXML.Elements("article");
@@ -165,7 +167,7 @@ namespace IS
 
                     if (tempTerm.Equals(""))
                     {
-                        break;
+                        continue;
                     }
 
                     if (termsDictionary.TryGetValue(tempTerm, out List<string> docList))
@@ -200,6 +202,62 @@ namespace IS
             }
 
             xml.Save(directory + "\\" + type + "_index.xml");
+
+            return termsDictionary;
+
+        }
+
+        //Task4
+        public static void Intersection()
+        {
+            Console.WriteLine("Type terms and press Enter: ");
+            string phrase = Console.ReadLine();
+            var words = phrase.Trim().Split(" ");
+            bool exceptSign = false;
+
+            IEnumerable<string> result = null;
+
+            foreach (var word in words)
+            {
+                var porterWord = word;
+                if (porterWord.ElementAt(0).Equals('-'))
+                {
+                    Console.WriteLine("-");
+                    exceptSign = true;
+                    porterWord = porterWord.Remove(0, 1);
+                }
+
+                porterWord = PorterForString(porterWord).Trim();
+
+                if (termsDictionary.ContainsKey(porterWord))
+                {
+                    if (!exceptSign)
+                    {
+                        result = result == null ? termsDictionary[porterWord] : result.Intersect(termsDictionary[porterWord]);
+                    }
+                    else
+                    {
+                        result = result.Except(termsDictionary[porterWord]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(porterWord + " isn't found in the dictionary");
+                    result = null;
+                    break;
+                }
+
+                exceptSign = false;
+            }
+
+            if (result != null)
+            {
+                Console.WriteLine("Intersection: " + String.Join(", ", result));
+            }
+            else
+            {
+                Console.WriteLine("There are no intersections");
+            }
 
         }
 
