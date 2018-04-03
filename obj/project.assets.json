@@ -4138,28 +4138,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pavel\\.nuget\\packages\\": {},
+    "C:\\Users\\Pavel\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\IS\\IS.csproj",
+      "projectUniqueName": "D:\\Projects\\IS_course_2018\\IS.csproj",
       "projectName": "IS",
-      "projectPath": "C:\\Projects\\IS\\IS.csproj",
-      "packagesPath": "C:\\Users\\pavel\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\IS\\obj\\",
+      "projectPath": "D:\\Projects\\IS_course_2018\\IS.csproj",
+      "packagesPath": "C:\\Users\\Pavel\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\IS_course_2018\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\pavel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Pavel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

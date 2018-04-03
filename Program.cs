@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Linq;
@@ -27,9 +28,9 @@ namespace IS
             Console.OutputEncoding = Encoding.UTF8;
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            MainAsync(args).GetAwaiter().GetResult();
+            // MainAsync(args).GetAwaiter().GetResult();
 
-            CreateInvertedIndex("mystem");
+            // CreateInvertedIndex("mystem");
             CreateInvertedIndex("porter");
         }
 
@@ -101,7 +102,7 @@ namespace IS
             p.StartInfo.RedirectStandardOutput = true;
             p.Start();
 
-            using(var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
+            using (var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
             {
                 output = reader.ReadToEnd();
             }
@@ -130,6 +131,20 @@ namespace IS
             XElement inputXML = XElement.Load("document.xml");
             var elements = inputXML.Elements("article");
             var termsDictionary = new SortedDictionary<string, List<string>>();
+            var pattern = Regex.Escape(@"$\{125,96,1;1,48,125\}$") + "|"
+                        + Regex.Escape(@"m(w)=(2\pi)^{-1}\ln\omega(w)$") + "|"
+                        + Regex.Escape(@"$k_0(w,\overline\omega)$и$l_0(w,\omega)$") + "| 3|"
+                        + Regex.Escape(@"$t$") + "|"
+                        + Regex.Escape(@"$\mathrm") + "|"
+                        + Regex.Escape(@" –") + "|"
+                        + Regex.Escape(@"$gq(4,6)$") + "|"
+                        + Regex.Escape(@"$t$,$2&lt;t\leq3$") + "|"
+                        + Regex.Escape(@"$t=1,2,\dots$в") + "|"
+                        + Regex.Escape(@",$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.") + "|"
+                        + Regex.Escape(@"$\omega=\omega(w)$") + "|"
+                        + Regex.Escape(@"$\omega(w)$") + "|"
+                        + Regex.Escape(@"$t$");
+
 
             for (int i = 0; i < elements.Count(); i++)
             {
@@ -141,12 +156,19 @@ namespace IS
                 }
                 else
                 {
-                    terms = elements.ElementAt(i).Element(type).Value.Trim(new Char[] { '(', ')', '.', ',' }).Split(" ");
+                    terms = Regex.Replace(elements.ElementAt(i).Element(type).Value, pattern, " ").Trim(new Char[] { '(', ')', '.', ',', '“' }).Split(" ");
                 }
 
                 foreach (var term in terms)
                 {
-                    if (termsDictionary.TryGetValue(term, out List<string> docList))
+                    var tempTerm = term.Trim(new Char[] { '(', ')', '.', ',', '“', ' ', '”' });
+
+                    if (tempTerm.Equals(""))
+                    {
+                        break;
+                    }
+
+                    if (termsDictionary.TryGetValue(tempTerm, out List<string> docList))
                     {
                         if (!docList.Contains(doc))
                         {
@@ -156,30 +178,28 @@ namespace IS
                     else
                     {
                         var tempList = new List<string>() { doc };
-                        termsDictionary[term] = tempList;
+                        termsDictionary[tempTerm] = tempList;
                     }
                 }
 
-                // terms.AddRange(value.Split("}{").ToList());
-                // Console.WriteLine(item.Value.Contains("{"));                
-                // Console.WriteLine(String.Join(", ", item.Element("mystem").Value.Split("}{").ToList()));
             }
 
             XElement xml = new XElement(new XElement("terms",
-                new XElement(type)
+                new XElement(type, "")
             ));
 
             foreach (KeyValuePair<string, List<string>> term in termsDictionary)
             {
-                xml.Add(new XElement("term", new XAttribute("name", term.Key),
-                    new XElement("docs", String.Join(", ", term.Value.ToArray()))
-                ));
+                XElement newNode = new XElement("term", new XAttribute("name", term.Key),
+                                        new XElement("docs", new XAttribute("count", term.Value.Count), ""));
+                foreach (var value in term.Value)
+                {
+                    newNode.Descendants("docs").LastOrDefault().Add(new XElement("doc", value));
+                }
+                xml.Descendants(type).LastOrDefault().Add(newNode);
             }
 
-            Console.WriteLine(xml);
-            Console.WriteLine(directory);
             xml.Save(directory + "\\" + type + "_index.xml");
-            // Console.WriteLine(String.Join(", ", words.ToArray()));
 
         }
 
