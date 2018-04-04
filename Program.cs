@@ -32,8 +32,12 @@ namespace IS
             // MainAsync(args).GetAwaiter().GetResult();
 
             // CreateInvertedIndex("mystem");
-            CreateInvertedIndex("porter");
-            // Intersection();
+            // CreateInvertedIndex("porter");
+            
+            // string phrase = TypePhrase();
+            // Intersection(phrase);
+
+            Task5();
         }
 
         private static async Task MainAsync(string[] args)
@@ -152,7 +156,6 @@ namespace IS
                         + Regex.Escape(@"t\leq") + "|"
                         + Regex.Escape(@"<");
 
-
             for (int i = 0; i < elements.Count(); i++)
             {
                 string doc = elements.ElementAt(i).Attribute("link").Value;
@@ -213,12 +216,18 @@ namespace IS
 
         }
 
-        //Task4
-        public static void Intersection()
+        private static string TypePhrase()
         {
             Console.WriteLine("Type terms and press Enter: ");
             string phrase = Console.ReadLine();
-            var words = phrase.Trim().Split(" ");
+
+            return phrase;
+        }
+
+        //Task4
+        private static IEnumerable<string> Intersection(string phrase, out string[] words)
+        {
+            words = phrase.Trim().Split(" ");
             bool exceptSign = false;
 
             IEnumerable<string> result = null;
@@ -264,6 +273,84 @@ namespace IS
                 Console.WriteLine("There are no intersections");
             }
 
+            return result;
+
+        }
+
+        //TF-IDF
+        private static void Task5()
+        {
+            string phrase = TypePhrase();
+            string[] words;
+            var docs = Intersection(phrase, out words);
+            float score = 0;
+            float TFIDF = 0;
+            foreach (var word in words)
+            {
+                var porterWord = PorterForString(word).Trim();
+                Console.WriteLine("word: " + word);
+                
+                foreach (var doc in docs)
+                {
+                    TFIDF = TF(porterWord, doc) * IDF(porterWord);
+                    score += TFIDF; 
+                    Console.WriteLine("article link: " + doc);
+                    Console.WriteLine("tf-idf = " + TFIDF);
+                    Console.WriteLine(" ");    
+                }
+                Console.WriteLine("score = " + score);
+                score = 0;
+                Console.WriteLine("-----------------------------");
+            }
+        }
+
+        private static float TF(string word, string doc)
+        {
+            XElement inputXML = XElement.Load("document.xml");
+            var parsedText = inputXML.Descendants().Where(e => (string) e.Attribute("link") == doc).FirstOrDefault().Element("porter").Value;
+
+            var pattern = Regex.Escape(@"$\{125,96,1;1,48,125\}$") + "|"
+                        + Regex.Escape(@"m(w)=(2\pi)^{-1}\ln\omega(w)$") + "|"
+                        + Regex.Escape(@"$k_0(w,\overline\omega)$и$l_0(w,\omega)$") + "| 3|"
+                        + Regex.Escape(@"$t$") + "|"
+                        + Regex.Escape(@"$\mathrm") + "|"
+                        + Regex.Escape(@"–") + "|"
+                        + Regex.Escape(@"$gq(4,6)$") + "|"
+                        + Regex.Escape(@"$t$,$2&lt;t\leq3$") + "|"
+                        + Regex.Escape(@"$t=1,2,\dots$в") + "|"
+                        + Regex.Escape(@",$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.") + "|"
+                        + Regex.Escape(@"$\omega=\omega(w)$") + "|"
+                        + Regex.Escape(@"$\omega(w)$") + "|"
+                        + Regex.Escape(@"$t$") + "|"
+                        + Regex.Escape(@"$2&lt;t\leq3$") + "|"
+                        + @"\d" + "|"
+                        + Regex.Escape(@"$") + "|"
+                        + Regex.Escape(@"t\leq") + "|"
+                        + Regex.Escape(@"<");
+
+            var terms = Regex.Replace(parsedText, pattern, " ").Trim(new Char[] { '(', ')', '.', ',', '“' }).Split();
+            
+            float count = 0;
+
+            foreach (var term in terms)
+            {
+                var tempTerm = term.Trim(new Char[] { '(', ')', '.', ',', '“', ' ', '”', ':' });
+    
+                if (string.Equals(word, tempTerm))
+                {
+                    count++;
+                }
+            }
+
+            return count / terms.Length;
+        }
+
+        private static float IDF(string word)
+        {
+            XElement inputXML = XElement.Load("document.xml");
+            var elements = inputXML.Elements("article");            
+
+            return MathF.Log10((float) elements.Count() / (float) termsDictionary[word].Count);
         }
 
     }
