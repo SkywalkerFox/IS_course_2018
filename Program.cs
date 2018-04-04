@@ -39,9 +39,9 @@ namespace IS
             // string phrase = TypePhrase();
             // Intersection(phrase);
 
-            // Task5();
-            
-            Task6();
+            Task5();
+
+            // Task6();
         }
 
         private static async Task MainAsync(string[] args)
@@ -281,14 +281,53 @@ namespace IS
 
         }
 
+        private static IEnumerable<string> Union(string phrase, out string[] words)
+        {
+            words = phrase.Trim().Split(" ");
+
+            IEnumerable<string> result = null;
+
+            foreach (var word in words)
+            {
+                var porterWord = word;
+                porterWord = PorterForString(porterWord).Trim();
+
+                if (termsDictionary.ContainsKey(porterWord))
+                {
+                    result = result == null ? termsDictionary[porterWord] : result.Union(termsDictionary[porterWord]);
+
+                }
+                else
+                {
+                    Console.WriteLine(porterWord + " isn't found in the dictionary");
+                    result = null;
+                    break;
+                }
+
+            }
+
+            if (result != null)
+            {
+                Console.WriteLine("Union: " + String.Join(", ", result));
+            }
+            else
+            {
+                Console.WriteLine("There are no unions");
+            }
+
+            return result;
+        }
+
         //TF-IDF
         private static void Task5()
         {
             string phrase = TypePhrase();
             string[] words;
-            var docs = Intersection(phrase, out words);
-            float score = 0;
+            var docs = Union(phrase, out words);
             float TFIDF = 0;
+
+            Dictionary<string, float> scoresDictionary = new Dictionary<string, float>();
+
             foreach (var word in words)
             {
                 var porterWord = PorterForString(word).Trim();
@@ -297,14 +336,28 @@ namespace IS
                 foreach (var doc in docs)
                 {
                     TFIDF = TF(porterWord, doc) * IDF(porterWord);
-                    score += TFIDF;
+
+                    if (scoresDictionary.TryGetValue(doc, out float score))
+                    {
+                        score += TFIDF;
+                    }
+                    else
+                    {
+                        scoresDictionary[doc] = TFIDF;
+                    }
+
                     Console.WriteLine("article link: " + doc);
                     Console.WriteLine("tf-idf = " + TFIDF);
                     Console.WriteLine(" ");
                 }
-                Console.WriteLine("score = " + score);
-                score = 0;
                 Console.WriteLine("-----------------------------");
+            }
+
+            var sortedScores = from entry in scoresDictionary orderby entry.Value descending select entry;
+
+            foreach (KeyValuePair<string, float> score in sortedScores)
+            {
+                Console.WriteLine("Score for " + score.Key + " = " + score.Value);
             }
         }
 
@@ -367,7 +420,7 @@ namespace IS
             var V = svd.RightSingularVectors;
             var Vt = V.Transpose();
 
-            var newRank = 7; 
+            var newRank = 7;
 
             var U_rank = U.Get(0, U.GetLength(0), 0, newRank);
             var S_rank = S.Get(0, newRank, 0, newRank);
@@ -447,9 +500,9 @@ namespace IS
                 for (j = 0; j < 10; j++)
                 {
                     A[n, j] = termsDictionary.ElementAt(n).Value[j];
-                    
+
                 }
-                
+
             }
 
             return A;
