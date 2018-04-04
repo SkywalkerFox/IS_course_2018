@@ -32,8 +32,8 @@ namespace IS
             // MainAsync(args).GetAwaiter().GetResult();
 
             // CreateInvertedIndex("mystem");
-            // CreateInvertedIndex("porter");
-            Intersection();
+            CreateInvertedIndex("porter");
+            // Intersection();
         }
 
         private static async Task MainAsync(string[] args)
@@ -138,14 +138,19 @@ namespace IS
                         + Regex.Escape(@"$k_0(w,\overline\omega)$и$l_0(w,\omega)$") + "| 3|"
                         + Regex.Escape(@"$t$") + "|"
                         + Regex.Escape(@"$\mathrm") + "|"
-                        + Regex.Escape(@" –") + "|"
+                        + Regex.Escape(@"–") + "|"
                         + Regex.Escape(@"$gq(4,6)$") + "|"
                         + Regex.Escape(@"$t$,$2&lt;t\leq3$") + "|"
                         + Regex.Escape(@"$t=1,2,\dots$в") + "|"
                         + Regex.Escape(@",$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.") + "|"
                         + Regex.Escape(@"$\omega=\omega(w)$") + "|"
                         + Regex.Escape(@"$\omega(w)$") + "|"
-                        + Regex.Escape(@"$t$");
+                        + Regex.Escape(@"$t$") + "|"
+                        + Regex.Escape(@"$2&lt;t\leq3$") + "|"
+                        + @"\d" + "|"
+                        + Regex.Escape(@"$") + "|"
+                        + Regex.Escape(@"t\leq") + "|"
+                        + Regex.Escape(@"<");
 
 
             for (int i = 0; i < elements.Count(); i++)
@@ -158,12 +163,12 @@ namespace IS
                 }
                 else
                 {
-                    terms = Regex.Replace(elements.ElementAt(i).Element(type).Value, pattern, " ").Trim(new Char[] { '(', ')', '.', ',', '“' }).Split(" ");
+                    terms = Regex.Replace(elements.ElementAt(i).Element(type).Value, pattern, " ").Trim(new Char[] { '(', ')', '.', ',', '“' }).Split();
                 }
 
                 foreach (var term in terms)
                 {
-                    var tempTerm = term.Trim(new Char[] { '(', ')', '.', ',', '“', ' ', '”' });
+                    var tempTerm = term.Trim(new Char[] { '(', ')', '.', ',', '“', ' ', '”', ':' });
 
                     if (tempTerm.Equals(""))
                     {
@@ -182,6 +187,7 @@ namespace IS
                         var tempList = new List<string>() { doc };
                         termsDictionary[tempTerm] = tempList;
                     }
+
                 }
 
             }
