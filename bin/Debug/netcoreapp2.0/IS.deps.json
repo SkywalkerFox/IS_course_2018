@@ -1,18 +1,33 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "b60b2d29b350c75e869878b911752dcec6816dbb"
+    "signature": "793f43500ce4c035cce8a8907ddaab248f74a634"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "IS/1.0.0": {
         "dependencies": {
+          "Accord.Math": "3.8.0",
           "AngleSharp": "0.9.9.1",
           "System.Text.Encoding.CodePages": "4.4.0"
         },
         "runtime": {
           "IS.dll": {}
+        }
+      },
+      "Accord/3.8.0": {
+        "runtime": {
+          "lib/netstandard2.0/Accord.dll": {}
+        }
+      },
+      "Accord.Math/3.8.0": {
+        "dependencies": {
+          "Accord": "3.8.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Math.Core.dll": {},
+          "lib/netstandard2.0/Accord.Math.dll": {}
         }
       },
       "AngleSharp/0.9.9.1": {
@@ -609,6 +624,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Accord/3.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7kJrB570dO5ELim+2KWQNozuvWO9/BuZfZspdFy36fcWPNF2CEccblLuILeUlI8QJYd2DlBy0bfK8BlCx/uayA==",
+      "path": "accord/3.8.0",
+      "hashPath": "accord.3.8.0.nupkg.sha512"
+    },
+    "Accord.Math/3.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K3dzeQjDIrwRnoTRoMOoIbul2Uc0B8cnEtdrSlirmIo37C+jVkmYpJzme/z4Kg99XR2Vj5W5TTNlhjn+AKR+8A==",
+      "path": "accord.math/3.8.0",
+      "hashPath": "accord.math.3.8.0.nupkg.sha512"
     },
     "AngleSharp/0.9.9.1": {
       "type": "package",
