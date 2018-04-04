@@ -10,11 +10,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Linq;
+using Accord.Math;
+using Accord.Math.Decompositions;
 using AngleSharp;
 using AngleSharp.Dom;
 using AngleSharp.Parser.Html;
-using Accord.Math;
-using Accord.Math.Decompositions;
 
 namespace IS
 {
@@ -112,7 +112,7 @@ namespace IS
             p.StartInfo.RedirectStandardOutput = true;
             p.Start();
 
-            using (var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
+            using(var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
             {
                 output = reader.ReadToEnd();
             }
@@ -141,24 +141,24 @@ namespace IS
             XElement inputXML = XElement.Load("document.xml");
             var elements = inputXML.Elements("article");
             var termsDictionary = new SortedDictionary<string, List<string>>();
-            var pattern = Regex.Escape(@"$\{125,96,1;1,48,125\}$") + "|"
-                        + Regex.Escape(@"m(w)=(2\pi)^{-1}\ln\omega(w)$") + "|"
-                        + Regex.Escape(@"$k_0(w,\overline\omega)$и$l_0(w,\omega)$") + "| 3|"
-                        + Regex.Escape(@"$t$") + "|"
-                        + Regex.Escape(@"$\mathrm") + "|"
-                        + Regex.Escape(@"–") + "|"
-                        + Regex.Escape(@"$gq(4,6)$") + "|"
-                        + Regex.Escape(@"$t$,$2&lt;t\leq3$") + "|"
-                        + Regex.Escape(@"$t=1,2,\dots$в") + "|"
-                        + Regex.Escape(@",$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.") + "|"
-                        + Regex.Escape(@"$\omega=\omega(w)$") + "|"
-                        + Regex.Escape(@"$\omega(w)$") + "|"
-                        + Regex.Escape(@"$t$") + "|"
-                        + Regex.Escape(@"$2&lt;t\leq3$") + "|"
-                        + @"\d" + "|"
-                        + Regex.Escape(@"$") + "|"
-                        + Regex.Escape(@"t\leq") + "|"
-                        + Regex.Escape(@"<");
+            var pattern = Regex.Escape(@"$\{125,96,1;1,48,125\}$") + "|" +
+                Regex.Escape(@"m(w)=(2\pi)^{-1}\ln\omega(w)$") + "|" +
+                Regex.Escape(@"$k_0(w,\overline\omega)$и$l_0(w,\omega)$") + "| 3|" +
+                Regex.Escape(@"$t$") + "|" +
+                Regex.Escape(@"$\mathrm") + "|" +
+                Regex.Escape(@"–") + "|" +
+                Regex.Escape(@"$gq(4,6)$") + "|" +
+                Regex.Escape(@"$t$,$2&lt;t\leq3$") + "|" +
+                Regex.Escape(@"$t=1,2,\dots$в") + "|" +
+                Regex.Escape(@",$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.") + "|" +
+                Regex.Escape(@"$\omega=\omega(w)$") + "|" +
+                Regex.Escape(@"$\omega(w)$") + "|" +
+                Regex.Escape(@"$t$") + "|" +
+                Regex.Escape(@"$2&lt;t\leq3$") + "|" +
+                @"\d" + "|" +
+                Regex.Escape(@"$") + "|" +
+                Regex.Escape(@"t\leq") + "|" +
+                Regex.Escape(@"<");
 
             for (int i = 0; i < elements.Count(); i++)
             {
@@ -206,7 +206,7 @@ namespace IS
             foreach (KeyValuePair<string, List<string>> term in termsDictionary)
             {
                 XElement newNode = new XElement("term", new XAttribute("name", term.Key),
-                                        new XElement("docs", new XAttribute("count", term.Value.Count), ""));
+                    new XElement("docs", new XAttribute("count", term.Value.Count), ""));
                 foreach (var value in term.Value)
                 {
                     newNode.Descendants("docs").LastOrDefault().Add(new XElement("doc", value));
@@ -337,9 +337,9 @@ namespace IS
                 {
                     TFIDF = TF(porterWord, doc) * IDF(porterWord);
 
-                    if (scoresDictionary.TryGetValue(doc, out float score))
+                    if (scoresDictionary.ContainsKey(doc))
                     {
-                        score += TFIDF;
+                        scoresDictionary[doc] += TFIDF;
                     }
                     else
                     {
@@ -359,31 +359,33 @@ namespace IS
             {
                 Console.WriteLine("Score for " + score.Key + " = " + score.Value);
             }
+
+            
         }
 
         private static float TF(string word, string doc)
         {
             XElement inputXML = XElement.Load("document.xml");
-            var parsedText = inputXML.Descendants().Where(e => (string)e.Attribute("link") == doc).FirstOrDefault().Element("porter").Value;
+            var parsedText = inputXML.Descendants().Where(e =>(string) e.Attribute("link") == doc).FirstOrDefault().Element("porter").Value;
 
-            var pattern = Regex.Escape(@"$\{125,96,1;1,48,125\}$") + "|"
-                        + Regex.Escape(@"m(w)=(2\pi)^{-1}\ln\omega(w)$") + "|"
-                        + Regex.Escape(@"$k_0(w,\overline\omega)$и$l_0(w,\omega)$") + "| 3|"
-                        + Regex.Escape(@"$t$") + "|"
-                        + Regex.Escape(@"$\mathrm") + "|"
-                        + Regex.Escape(@"–") + "|"
-                        + Regex.Escape(@"$gq(4,6)$") + "|"
-                        + Regex.Escape(@"$t$,$2&lt;t\leq3$") + "|"
-                        + Regex.Escape(@"$t=1,2,\dots$в") + "|"
-                        + Regex.Escape(@",$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.") + "|"
-                        + Regex.Escape(@"$\omega=\omega(w)$") + "|"
-                        + Regex.Escape(@"$\omega(w)$") + "|"
-                        + Regex.Escape(@"$t$") + "|"
-                        + Regex.Escape(@"$2&lt;t\leq3$") + "|"
-                        + @"\d" + "|"
-                        + Regex.Escape(@"$") + "|"
-                        + Regex.Escape(@"t\leq") + "|"
-                        + Regex.Escape(@"<");
+            var pattern = Regex.Escape(@"$\{125,96,1;1,48,125\}$") + "|" +
+                Regex.Escape(@"m(w)=(2\pi)^{-1}\ln\omega(w)$") + "|" +
+                Regex.Escape(@"$k_0(w,\overline\omega)$и$l_0(w,\omega)$") + "| 3|" +
+                Regex.Escape(@"$t$") + "|" +
+                Regex.Escape(@"$\mathrm") + "|" +
+                Regex.Escape(@"–") + "|" +
+                Regex.Escape(@"$gq(4,6)$") + "|" +
+                Regex.Escape(@"$t$,$2&lt;t\leq3$") + "|" +
+                Regex.Escape(@"$t=1,2,\dots$в") + "|" +
+                Regex.Escape(@",$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.") + "|" +
+                Regex.Escape(@"$\omega=\omega(w)$") + "|" +
+                Regex.Escape(@"$\omega(w)$") + "|" +
+                Regex.Escape(@"$t$") + "|" +
+                Regex.Escape(@"$2&lt;t\leq3$") + "|" +
+                @"\d" + "|" +
+                Regex.Escape(@"$") + "|" +
+                Regex.Escape(@"t\leq") + "|" +
+                Regex.Escape(@"<");
 
             var terms = Regex.Replace(parsedText, pattern, " ").Trim(new Char[] { '(', ')', '.', ',', '“' }).Split();
 
@@ -407,7 +409,7 @@ namespace IS
             XElement inputXML = XElement.Load("document.xml");
             var elements = inputXML.Elements("article");
 
-            return MathF.Log10((float)elements.Count() / (float)termsDictionary[word].Count);
+            return MathF.Log((float) elements.Count() / (float) termsDictionary[word].Count);
         }
 
         //SVD and more
@@ -437,32 +439,31 @@ namespace IS
             //     Console.WriteLine("");
             // }
 
-
         }
 
-        private static float[,] CreateMatrixA()
+        private static float[, ] CreateMatrixA()
         {
             XElement inputXML = XElement.Load("document.xml");
             var elements = inputXML.Elements("article");
             var termsDictionary = new SortedDictionary<string, List<int>>();
-            var pattern = Regex.Escape(@"$\{125,96,1;1,48,125\}$") + "|"
-                        + Regex.Escape(@"m(w)=(2\pi)^{-1}\ln\omega(w)$") + "|"
-                        + Regex.Escape(@"$k_0(w,\overline\omega)$и$l_0(w,\omega)$") + "| 3|"
-                        + Regex.Escape(@"$t$") + "|"
-                        + Regex.Escape(@"$\mathrm") + "|"
-                        + Regex.Escape(@"–") + "|"
-                        + Regex.Escape(@"$gq(4,6)$") + "|"
-                        + Regex.Escape(@"$t$,$2&lt;t\leq3$") + "|"
-                        + Regex.Escape(@"$t=1,2,\dots$в") + "|"
-                        + Regex.Escape(@",$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.") + "|"
-                        + Regex.Escape(@"$\omega=\omega(w)$") + "|"
-                        + Regex.Escape(@"$\omega(w)$") + "|"
-                        + Regex.Escape(@"$t$") + "|"
-                        + Regex.Escape(@"$2&lt;t\leq3$") + "|"
-                        + @"\d" + "|"
-                        + Regex.Escape(@"$") + "|"
-                        + Regex.Escape(@"t\leq") + "|"
-                        + Regex.Escape(@"<");
+            var pattern = Regex.Escape(@"$\{125,96,1;1,48,125\}$") + "|" +
+                Regex.Escape(@"m(w)=(2\pi)^{-1}\ln\omega(w)$") + "|" +
+                Regex.Escape(@"$k_0(w,\overline\omega)$и$l_0(w,\omega)$") + "| 3|" +
+                Regex.Escape(@"$t$") + "|" +
+                Regex.Escape(@"$\mathrm") + "|" +
+                Regex.Escape(@"–") + "|" +
+                Regex.Escape(@"$gq(4,6)$") + "|" +
+                Regex.Escape(@"$t$,$2&lt;t\leq3$") + "|" +
+                Regex.Escape(@"$t=1,2,\dots$в") + "|" +
+                Regex.Escape(@",$\{176,150,1;1,25,176\}$и$\{256,204,1;1,51,256\}$.") + "|" +
+                Regex.Escape(@"$\omega=\omega(w)$") + "|" +
+                Regex.Escape(@"$\omega(w)$") + "|" +
+                Regex.Escape(@"$t$") + "|" +
+                Regex.Escape(@"$2&lt;t\leq3$") + "|" +
+                @"\d" + "|" +
+                Regex.Escape(@"$") + "|" +
+                Regex.Escape(@"t\leq") + "|" +
+                Regex.Escape(@"<");
 
             for (int i = 0; i < elements.Count(); i++)
             {
@@ -491,7 +492,7 @@ namespace IS
                 }
             }
 
-            float[,] A = new float[termsDictionary.Keys.Count, 10];
+            float[, ] A = new float[termsDictionary.Keys.Count, 10];
             int n = 0;
             int j = 0;
 

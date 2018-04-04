@@ -32,3 +32,4 @@ D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.dll
 D:\IS_course_2018\obj\Debug\netcoreapp2.0\IS.pdb
 C:\Projects\IS\obj\Debug\netcoreapp2.0\IS.csprojResolveAssemblyReference.cache
 D:\Projects\IS_course_2018\bin\Debug\netcoreapp2.0\Accord.dll.config
+C:\Projects\IS\bin\Debug\netcoreapp2.0\Accord.dll.config
