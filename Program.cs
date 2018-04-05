@@ -39,9 +39,9 @@ namespace IS
             // string phrase = TypePhrase();
             // Intersection(phrase);
 
-            Task5();
+            // Task5();
 
-            // Task6();
+            Task6();
         }
 
         private static async Task MainAsync(string[] args)
@@ -112,7 +112,7 @@ namespace IS
             p.StartInfo.RedirectStandardOutput = true;
             p.Start();
 
-            using(var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
+            using (var reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8))
             {
                 output = reader.ReadToEnd();
             }
@@ -360,13 +360,13 @@ namespace IS
                 Console.WriteLine("Score for " + score.Key + " = " + score.Value);
             }
 
-            
+
         }
 
         private static float TF(string word, string doc)
         {
             XElement inputXML = XElement.Load("document.xml");
-            var parsedText = inputXML.Descendants().Where(e =>(string) e.Attribute("link") == doc).FirstOrDefault().Element("porter").Value;
+            var parsedText = inputXML.Descendants().Where(e => (string)e.Attribute("link") == doc).FirstOrDefault().Element("porter").Value;
 
             var pattern = Regex.Escape(@"$\{125,96,1;1,48,125\}$") + "|" +
                 Regex.Escape(@"m(w)=(2\pi)^{-1}\ln\omega(w)$") + "|" +
@@ -409,39 +409,131 @@ namespace IS
             XElement inputXML = XElement.Load("document.xml");
             var elements = inputXML.Elements("article");
 
-            return MathF.Log((float) elements.Count() / (float) termsDictionary[word].Count);
+            return MathF.Log((float)elements.Count() / (float)termsDictionary[word].Count);
         }
 
         //SVD and more
         private static void Task6()
         {
-            var A = CreateMatrixA();
+            var phrase = TypePhrase();
+            var termsWeightsMap = new SortedDictionary<string, List<int>>();
+
+            // Step 1
+            var A = CreateMatrixA(out termsWeightsMap);
+            var queryVec = CreateQueryVector(phrase, termsWeightsMap);
+
+            // Step 2
             SingularValueDecompositionF svd = new SingularValueDecompositionF(A);
             var U = svd.LeftSingularVectors;
             var S = svd.DiagonalMatrix;
             var V = svd.RightSingularVectors;
             var Vt = V.Transpose();
 
+            // Step 3
             var newRank = 7;
-
             var U_rank = U.Get(0, U.GetLength(0), 0, newRank);
             var S_rank = S.Get(0, newRank, 0, newRank);
-            var V_rank = V.Get(0, U.GetLength(0), 0, newRank);
+            var V_rank = V.Get(0, V.GetLength(0), 0, newRank);
             var Vt_rank = V_rank.Transpose();
-            // for debugging
-            //
-            // for (int i = 0; i < U_rank.GetLength(0); i++)
-            // {
-            //     for (int j = 0; j < U_rank.GetLength(1); j++)
-            //     {                    
-            //         Console.Write(U_rank[i, j] + " , ");
-            //     }
-            //     Console.WriteLine("");
-            // }
+
+            // Step 4
+            float[][] docsVectors = GetNewDocVecCoordinates(V_rank);
+
+            // Step 5
+            var newQueryVec = GetNewQueryVector(queryVec, U_rank, S_rank);
+
+            // Step 6
+            var scores = CalculateSimForDocs(newQueryVec, docsVectors);
+            foreach (var score in scores)
+            {
+                Console.WriteLine("Score for ID " + score.Key + " = " + score.Value);
+            }
 
         }
 
-        private static float[, ] CreateMatrixA()
+        private static IOrderedEnumerable<KeyValuePair<int, float>> CalculateSimForDocs(float[] queryVec, float[][] docsVectors)
+        {
+            var scores = new Dictionary<int, float>();
+
+
+            for (int i = 0; i < docsVectors.GetLength(0); i++)
+            {
+                scores[i] = Sim(queryVec, docsVectors[i]);
+            }
+
+            var orderedScores = from score in scores orderby score.Value descending select score;
+
+            return orderedScores;
+        }
+
+        private static float Sim(float[] queryVec, float[] docVec)
+        {
+            float num = 0;
+            float denom = 0;
+            float lengthQuery = 0;
+            float lengthDoc = 0;
+
+            for (int i = 0; i < queryVec.Length; i++)
+            {
+                num += queryVec[i] * docVec[i];
+                lengthQuery += queryVec[i] * queryVec[i];
+                lengthDoc += docVec[i] * docVec[i];
+                // Console.WriteLine(lengthQuery);
+                // Console.WriteLine(lengthDoc);
+            }
+            denom = MathF.Sqrt(lengthQuery) * MathF.Sqrt(lengthDoc);
+            
+
+            return num / denom;
+        }
+
+        private static float[] GetNewQueryVector(float[] queryVec, float[,] U_rank, float[,] S_rank)
+        {
+            var S_rank_inv = S_rank.Inverse();
+
+            return queryVec.Dot(U_rank).Dot(S_rank_inv);
+
+        }
+
+        private static float[][] GetNewDocVecCoordinates(float[,] V_rank)
+        {
+            float[][] docsVectors = new float[V_rank.GetLength(0)][];
+
+            for (int i = 0; i < V_rank.GetLength(0); i++)
+            {
+                docsVectors[i] = new float[V_rank.GetLength(1)];
+                for (int j = 0; j < V_rank.GetLength(1); j++)
+                {
+                    docsVectors[i][j] = V_rank[i, j];
+                }
+            }
+
+            return docsVectors;
+        }
+
+        private static float[] CreateQueryVector(string phrase, SortedDictionary<string, List<int>> termsWeightsMap)
+        {
+            var termsPhrase = PorterForString(phrase);
+            var terms = termsPhrase.Split();
+            float[] queryVec = Enumerable.Repeat(0f, termsWeightsMap.Keys.Count).ToArray();
+
+            for (int i = 0; i < terms.Length; i++)
+            {
+
+                for (int j = 0; j < queryVec.Length; j++)
+                {
+                    if (termsWeightsMap.ElementAt(j).Key.Equals(terms[i]))
+                    {
+                        queryVec[j]++;
+                    }
+                    
+                }
+            }
+
+            return queryVec;
+        }
+
+        private static float[,] CreateMatrixA(out SortedDictionary<string, List<int>> dictionary)
         {
             XElement inputXML = XElement.Load("document.xml");
             var elements = inputXML.Elements("article");
@@ -492,7 +584,7 @@ namespace IS
                 }
             }
 
-            float[, ] A = new float[termsDictionary.Keys.Count, 10];
+            float[,] A = new float[termsDictionary.Keys.Count, 10];
             int n = 0;
             int j = 0;
 
@@ -506,6 +598,7 @@ namespace IS
 
             }
 
+            dictionary = termsDictionary;
             return A;
 
         }
