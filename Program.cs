@@ -417,9 +417,10 @@ namespace IS
         {
             var phrase = TypePhrase();
             var termsWeightsMap = new SortedDictionary<string, List<int>>();
+            var docsRefs = new List<string>();
 
             // Step 1
-            var A = CreateMatrixA(out termsWeightsMap);
+            var A = CreateMatrixA(out termsWeightsMap, out docsRefs);
             var queryVec = CreateQueryVector(phrase, termsWeightsMap);
 
             // Step 2
@@ -443,22 +444,22 @@ namespace IS
             var newQueryVec = GetNewQueryVector(queryVec, U_rank, S_rank);
 
             // Step 6
-            var scores = CalculateSimForDocs(newQueryVec, docsVectors);
+            var scores = CalculateSimForDocs(newQueryVec, docsVectors, docsRefs);
             foreach (var score in scores)
             {
-                Console.WriteLine("Score for ID " + score.Key + " = " + score.Value);
+                Console.WriteLine("Score for " + score.Key + " = " + score.Value);
             }
 
         }
 
-        private static IOrderedEnumerable<KeyValuePair<int, float>> CalculateSimForDocs(float[] queryVec, float[][] docsVectors)
+        private static IOrderedEnumerable<KeyValuePair<string, float>> CalculateSimForDocs(float[] queryVec, float[][] docsVectors, List<string> docsRefs)
         {
-            var scores = new Dictionary<int, float>();
+            var scores = new Dictionary<string, float>();
 
 
             for (int i = 0; i < docsVectors.GetLength(0); i++)
             {
-                scores[i] = Sim(queryVec, docsVectors[i]);
+                scores[docsRefs.ElementAt(i)] = Sim(queryVec, docsVectors[i]);
             }
 
             var orderedScores = from score in scores orderby score.Value descending select score;
@@ -533,7 +534,7 @@ namespace IS
             return queryVec;
         }
 
-        private static float[,] CreateMatrixA(out SortedDictionary<string, List<int>> dictionary)
+        private static float[,] CreateMatrixA(out SortedDictionary<string, List<int>> dictionary, out List<string> docsRefs)
         {
             XElement inputXML = XElement.Load("document.xml");
             var elements = inputXML.Elements("article");
@@ -557,8 +558,12 @@ namespace IS
                 Regex.Escape(@"t\leq") + "|" +
                 Regex.Escape(@"<");
 
+            docsRefs = new List<string>();
+            
+
             for (int i = 0; i < elements.Count(); i++)
             {
+                docsRefs.Add(elements.ElementAt(i).FirstAttribute.Value);
                 var terms = Regex.Replace(elements.ElementAt(i).Element("porter").Value, pattern, " ").Trim(new Char[] { '(', ')', '.', ',', '“' }).Split();
 
                 foreach (var term in terms)
