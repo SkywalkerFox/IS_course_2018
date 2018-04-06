@@ -39,9 +39,9 @@ namespace IS
             // string phrase = TypePhrase();
             // Intersection(phrase);
 
-            // Task5();
+            Task5();
 
-            Task6();
+            // Task6();
         }
 
         private static async Task MainAsync(string[] args)
@@ -325,6 +325,7 @@ namespace IS
             string[] words;
             var docs = Union(phrase, out words);
             float TFIDF = 0;
+            float zoneCoef = 1;
 
             Dictionary<string, float> scoresDictionary = new Dictionary<string, float>();
 
@@ -337,13 +338,15 @@ namespace IS
                 {
                     TFIDF = TF(porterWord, doc) * IDF(porterWord);
 
+                    zoneCoef = GetZoneCoef(word, doc);
+
                     if (scoresDictionary.ContainsKey(doc))
                     {
-                        scoresDictionary[doc] += TFIDF;
+                        scoresDictionary[doc] += TFIDF * zoneCoef;
                     }
                     else
                     {
-                        scoresDictionary[doc] = TFIDF;
+                        scoresDictionary[doc] = TFIDF * zoneCoef;
                     }
 
                     Console.WriteLine("article link: " + doc);
@@ -361,6 +364,24 @@ namespace IS
             }
 
 
+        }
+
+        private static float GetZoneCoef(string word, string doc)
+        {
+            XElement inputXML = XElement.Load("document.xml");
+            var articleText = inputXML.Descendants().Where(e => (string)e.Attribute("link") == doc).FirstOrDefault();
+
+            if (articleText.Element("title").Value.Contains(word))
+            {
+                // Console.WriteLine("doc " + doc + ", word " + word);
+                return 0.6f;
+            }
+            if (articleText.Element("annotation").Value.Contains(word))
+            {
+                return 0.4f;
+            }
+
+            return 1;
         }
 
         private static float TF(string word, string doc)
